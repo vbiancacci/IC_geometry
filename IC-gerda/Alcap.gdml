@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY define_detector SYSTEM "define_detector.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+
+ <define>
+
+
+ &define_detector;
+
+
+  <quantity name="Alcap_z" type="length" value="Alcap_height" unit="mm"/>
+  <quantity name="Alcap_radius" type="length" value="Alcap_width/2" unit="mm"/>
+  
+
+
+  <quantity name="start_cavity_z" type="length" value="position_Alcap_cavity_fromTop" unit="mm"/>
+  <quantity name="Alcap_cavity_radius" type="length" value="(Alcap_width-Alcap_thickness)/2" unit="mm"/>
+
+ </define>
+
+ <materials/>
+
+ <solids>
+
+     	 <polycone name="Alcap" startphi="0" deltaphi="TWOPI" aunit="rad">
+                 <zplane rmin="0" rmax="Alcap_radius" z="0" />
+                 <zplane rmin="0" rmax="Alcap_radius" z="start_cavity_z" />
+                 <zplane rmin="Alcap_cavity_radius" rmax="Alcap_radius" z="start_cavity_z" />
+                 <zplane rmin="Alcap_cavity_radius" rmax="Alcap_radius" z="Alcap_z" />
+         </polycone>
+
+ </solids>
+
+
+
+
+
+
+ <structure>
+	 <volume name="AlCap">
+		 <materialref ref="G4_Al"/>
+		 <solidref ref="Alcap"/>
+	 </volume>
+ </structure>
+
+
+
+
+ <setup name="Default" version="1.0">
+	 <world ref="AlCap"/>
+ </setup>
+
+</gdml>
+
