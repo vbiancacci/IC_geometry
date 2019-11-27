@@ -23,14 +23,14 @@
   <quantity name="source_z" type="length" value="source_height" unit="mm"/>
   <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
 
-  <quantity name="pos_source_fromShield" type="length" value="position_source_fromShield" unit="cm"/>
+  <quantity name="pos_source_fromAlcap" type="length" value="position_source_fromAlcap" unit="cm"/>
   <quantity name="pos_crystal_fromTop" type="length" value="position_crystal_fromTop" unit="mm"/> 
   <quantity name="position_wrap" type="length" value="(position_holder_fromTop-(wrap_outer_height-cylinder_inner_height))"  unit="mm"/> 
   <quantity name="pos_holder_fromTop" type="length" value="position_holder_fromTop" unit="mm"/> 
 
-  <position name="pos_source"  z="-pos_source_fromShield" />
+  <position name="pos_source"  z="-pos_source_fromAlcap" />
   <position name="pos_crystal" z="pos_crystal_fromTop" />
-  <position name="pos_wrap" z="position_wrap"  /> 
+  <position name="pos_wrap" z="pos_holder_fromTop"/>                 <!--   "position_wrap"  /> -->
   <position name="pos_holder" z="pos_holder_fromTop"  />
 
   <quantity name="pos_Alcap" value="position_Alcap_fromBottom" type="length"  unit="mm" /> 
@@ -89,14 +89,14 @@
         <volume name="Vacuum_cavity">
                  <materialref ref="G4_Galactic"/>
                  <solidref ref="vacuum_cavity"/>
-		 <physvol>
+		<!-- <physvol>
                          <file name="crystal_IC160A.gdml"/>
                          <positionref ref="pos_crystal"/>
-		 </physvol><!--
+		 </physvol>-->
 		 <physvol>
                          <file name="crystal_IC160B.gdml"/>
                          <positionref ref="pos_crystal"/>
-		 </physvol> 
+		 </physvol> <!--
 		 <physvol>
                          <file name="crystal_IC162B.gdml"/>
                          <positionref ref="pos_crystal"/>
@@ -128,7 +128,7 @@
                          <file name="lead_castle_table1.gdml"/>
 			 <positionref ref="pos_lead_castle_table1"/>
 		 </physvol>
-		<!-- 
+		 <!--
 		 <physvol> 
 		 <file name="lead_castle_table2.gdml"/>
 			 <positionref ref="pos_lead_castle_table2"/>
@@ -136,7 +136,7 @@
 		 <physvol>
                          <file name="copper_plate_table2.gdml"/>
 			 <positionref ref="pos_copper_plate"/>
-		 </physvol> -->
+		 </physvol>-->
 		 <physvol> 
                          <volumeref ref="Source"/>
                          <positionref ref="pos_source"/>

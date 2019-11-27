@@ -35,8 +35,8 @@
 
 
  <!-- TEFLON WRAP  -->
-  <constant name="wrap_outer_height"   value="93.5" />
-  <constant name="wrap_inner_height"   value="92.5" />
+  <constant name="wrap_outer_height"   value="70.0"/>     <!--       "93.5" />  -->
+  <constant name="wrap_inner_height"   value="69.0"/>      <!--  "92.5" /> -->
 
   <constant name="wrap_outer_width"   value="82.3" />
   <constant name="wrap_inner_width"   value="80.9" />

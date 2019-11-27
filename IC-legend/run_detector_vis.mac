@@ -49,7 +49,7 @@
 /vis/scene/add/volume world
 /vis/scene/add/trajectories smooth
 /vis/scene/add/hits
-/vis/scene/add/axes 0 0 0 50 cm
+#/vis/scene/add/axes 0 0 0 50 cm
 
 #/vis/filtering/trajectories/create/chargeFilter
 #/vis/filtering/trajectories/chargeFilter-0/add 0
@@ -80,6 +80,11 @@
 /vis/modeling/trajectories/drawByAttribute-0/yellow/setLineColourRGBA  1.00 1.00 0.00 1
 /vis/modeling/trajectories/drawByAttribute-0/magenta/setLineColourRGBA  1.00 0.00 1.00 1
 
+#/vis/geometry/set/colour Crystal 0 1.00 0.67 0.60 1
+#/vis/geometry/set/colour Holder 0 0.60 0.90 0 1
+
+
+
 # If you want to see the list of available NIST materials (e.g. to help you
 # build your gdml file) uncomment this line
 #/material/nist/listMaterials
@@ -107,14 +112,14 @@
 /gps/pos/type Volume
 /gps/pos/shape Sphere
 /gps/pos/radius 1 mm
-/gps/pos/centre 0 0 -5 
+/gps/pos/centre 0 0 -4.2 
 /gps/pos/confine Source_PV
 #/gps/ang/type iso
 #/run/beamOn 100000
 
 
-/vis/scene/endOfEventAction accumulate 100
-/run/beamOn 100
+/vis/scene/endOfEventAction accumulate 1
+/run/beamOn 1
 /vis/viewer/flush
 /vis/viewer/set/autoRefresh true
 
