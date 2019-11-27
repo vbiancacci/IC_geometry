@@ -89,14 +89,14 @@
         <volume name="Vacuum_cavity">
                  <materialref ref="G4_Galactic"/>
                  <solidref ref="vacuum_cavity"/>
-		<!-- <physvol>
+		<physvol>
                          <file name="crystal_IC160A.gdml"/>
                          <positionref ref="pos_crystal"/>
-		 </physvol>-->
+		 </physvol><!--
 		 <physvol>
                          <file name="crystal_IC160B.gdml"/>
                          <positionref ref="pos_crystal"/>
-		 </physvol> <!--
+		 </physvol> 
 		 <physvol>
                          <file name="crystal_IC162B.gdml"/>
                          <positionref ref="pos_crystal"/>

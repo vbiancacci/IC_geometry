@@ -62,7 +62,7 @@
 /gps/particle  ion
 /gps/ion       82 212 0 0
 /gps/energy    0 MeV
-/grdm/nucleusLimits      208 212 81 82
+/grdm/nucleusLimits      208 212 81 83
 /gps/ang/type            iso
 #/gps/particle ion
 #/gps/ion 81 208 0 0
