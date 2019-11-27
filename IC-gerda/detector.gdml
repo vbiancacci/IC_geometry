@@ -23,12 +23,14 @@
 
   <quantity name="cylinder_z" type="length" value="cylinder_outer_height" unit="mm"/>
   
-  <quantity name="pos_source_fromShield" type="length" value="position_source_fromShield" unit="cm"/>
+  <quantity name="pos_source_fromAlcap" type="length" value="position_source_fromAlcap" unit="cm"/>
   <quantity name="pos_crystal_fromTop" type="length" value="position_crystal_fromTop" unit="mm"/> 
+<!--  <quantity name="position_wrap" type="length" value="(position_holder_fromTop-(wrap_outer_height-cylinder_inner_height))"  unit="mm"/> -->
   <quantity name="pos_holder_fromTop" type="length" value="position_holder_fromTop" unit="mm"/> 
 
-  <position name="pos_source"  z="-pos_source_fromShield" /> 
+  <position name="pos_source"  z="-pos_source_fromAlcap" /> 
   <position name="pos_crystal" z="pos_crystal_fromTop" /> 
+<!--  <position name="pos_wrap" z="position_wrap" />  -->
   <position name="pos_holder" z="pos_holder_fromTop"  />
 
   <quantity name="pos_Alcap" value="position_Alcap_fromBottom" type="length"  unit="mm" />
@@ -87,7 +89,11 @@
 		 <physvol>
                          <file name="crystal.gdml"/>
                          <positionref ref="pos_crystal"/>
-                 </physvol> 
+                 </physvol><!-- 
+		 <physvol>
+                         <file name="teflon_wrap.gdml"/>
+                         <positionref ref="pos_wrap"/>
+                 </physvol> -->
                  <physvol>
                          <file name="holder.gdml"/>
                          <positionref ref="pos_holder"/>
