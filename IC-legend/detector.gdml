@@ -19,18 +19,21 @@
 
  <!-- when positioning a volume associated to a Boolean solid, the relative center of coordinates considered for the positioning is the one related to the first of the two constituent solids -->
 
+  <quantity name="position_vacuum_cavity" type="length" value="position_Alcap_cavity_fromTop" unit="mm" />
+  <position name="pos_vacuum_cavity" z="position_vacuum_cavity"/>
 
   <quantity name="source_z" type="length" value="source_height" unit="mm"/>
   <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
 
   <quantity name="pos_source_fromAlcap" type="length" value="position_source_fromAlcap" unit="cm"/>
-  <quantity name="pos_crystal_fromTop" type="length" value="position_crystal_fromTop" unit="mm"/> 
-  <quantity name="position_wrap" type="length" value="(position_holder_fromTop-(wrap_outer_height-cylinder_inner_height))"  unit="mm"/> 
-  <quantity name="pos_holder_fromTop" type="length" value="position_holder_fromTop" unit="mm"/> 
+  <quantity name="pos_crystal_fromTop" type="length" value="(position_crystal_fromTop-position_vacuum_cavity)" unit="mm"/> 
+  <!-- <quantity name="position_wrap" type="length" value="(position_holder_fromTop-(wrap_outer_height-cylinder_inner_height))"  unit="mm"/> --> 
+  <quantity name="position_wrap" type="length" value="(position_holder_fromTop-position_vacuum_cavity)"  unit="mm"/> 
+  <quantity name="pos_holder_fromTop" type="length" value="(position_holder_fromTop-position_vacuum_cavity)" unit="mm"/> 
 
   <position name="pos_source"  z="-pos_source_fromAlcap" />
   <position name="pos_crystal" z="pos_crystal_fromTop" />
-  <position name="pos_wrap" z="pos_holder_fromTop"/>                 <!--   "position_wrap"  /> -->
+  <position name="pos_wrap" z="position_wrap"/>          
   <position name="pos_holder" z="pos_holder_fromTop"  />
 
   <quantity name="pos_Alcap" value="position_Alcap_fromBottom" type="length"  unit="mm" /> 
@@ -51,8 +54,6 @@
   <quantity name="vacuum_cavity_z" type="length" value="(Alcap_height-position_Alcap_cavity_fromTop-position_Alcap_cavity_fromBottom)" unit="mm"/>
   <quantity name="vacuum_cavity_radius" type="length" value="(Alcap_width-Alcap_thickness)/2" unit="mm"/>
   
-  <quantity name="pos_Alcap_cavity_fromTop" type="length" value="position_Alcap_cavity_fromTop" unit="mm" />
-  <position name="pos_vacuum_cavity" z="(pos_Alcap_cavity_fromTop)/2"/>
 
 
 
@@ -66,7 +67,7 @@
 
 
  <solids>
-	 <box name="worldBox" lunit="mm" x="1000.0" y="1000.0" z="1000.0"/>
+	 <box name="worldBox" lunit="m" x="10.0" y="10.0" z="10.0"/>
 
          <tube name="source" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
 
@@ -89,14 +90,14 @@
         <volume name="Vacuum_cavity">
                  <materialref ref="G4_Galactic"/>
                  <solidref ref="vacuum_cavity"/>
-		<physvol>
+		 <physvol>
                          <file name="crystal_IC160A.gdml"/>
                          <positionref ref="pos_crystal"/>
-		 </physvol><!--
+		 </physvol> <!--
 		 <physvol>
                          <file name="crystal_IC160B.gdml"/>
                          <positionref ref="pos_crystal"/>
-		 </physvol> 
+		 </physvol>
 		 <physvol>
                          <file name="crystal_IC162B.gdml"/>
                          <positionref ref="pos_crystal"/>
@@ -104,7 +105,7 @@
 		 <physvol>
                          <file name="crystal_IC166B.gdml"/>
                          <positionref ref="pos_crystal"/>
-		 </physvol>--> 
+		 </physvol> --> 
                  <physvol>
                          <file name="teflon_wrap.gdml"/>
                          <positionref ref="pos_wrap"/>
@@ -112,7 +113,7 @@
 		 <physvol>
                          <file name="holder.gdml"/>
                          <positionref ref="pos_holder"/>
-                 </physvol>
+		 </physvol> 
 	 </volume>
 
 
