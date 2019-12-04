@@ -52,7 +52,7 @@
   <position name="pos_copper_plate" z="-(lead_castle_table2_z-pos_Alcap+copper_plate_z/2)" />
 
   <quantity name="vacuum_cavity_z" type="length" value="(Alcap_height-position_Alcap_cavity_fromTop-position_Alcap_cavity_fromBottom)" unit="mm"/>
-  <quantity name="vacuum_cavity_radius" type="length" value="(Alcap_width-Alcap_thickness)/2" unit="mm"/>
+  <quantity name="vacuum_cavity_radius" type="length" value="(Alcap_width-2*Alcap_thickness)/2" unit="mm"/>
   
 
 

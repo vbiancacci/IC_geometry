@@ -23,7 +23,7 @@
 #/g4simple/setOutputOption eventwise
 
 # Change the name of the output file (by default it's g4simple.[ext])
-/analysis/setFileName detector_out_only_bismuth_IC60A_table1
+/analysis/setFileName detector_out_only_bismuth_IC60A_table1_test
 
 #/geometry/test/tolerance 0.01
 
@@ -74,5 +74,5 @@
 /gps/pos/confine Source_PV
 
 
-/run/beamOn 20000000
+/run/beamOn 20000
 
