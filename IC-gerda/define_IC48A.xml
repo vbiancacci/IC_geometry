@@ -56,6 +56,7 @@
 
   <constant name="Alcap_thickness"   value="1.5"/>
   <constant name="position_Alcap_cavity_fromTop" value="1.5" />
+  <constant name="position_Alcap_cavity_fromBottom" value="0.8" />
 
 
 

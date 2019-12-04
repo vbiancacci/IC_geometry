@@ -14,10 +14,11 @@
   <quantity name="Alcap_z" type="length" value="Alcap_height" unit="mm"/>
   <quantity name="Alcap_radius" type="length" value="Alcap_width/2" unit="mm"/>
   
-
-
   <quantity name="start_cavity_z" type="length" value="position_Alcap_cavity_fromTop" unit="mm"/>
-  <quantity name="Alcap_cavity_radius" type="length" value="(Alcap_width-Alcap_thickness)/2" unit="mm"/>
+
+  <quantity name="Alcap_cavity_radius" type="length" value="(Alcap_width-2*Alcap_thickness)/2" unit="mm"/>
+  <quantity name="end_cavity_z" type="length" value="(Alcap_height-position_Alcap_cavity_fromBottom)" unit="mm"/>
+
 
  </define>
 
@@ -29,7 +30,10 @@
                  <zplane rmin="0" rmax="Alcap_radius" z="0" />
                  <zplane rmin="0" rmax="Alcap_radius" z="start_cavity_z" />
                  <zplane rmin="Alcap_cavity_radius" rmax="Alcap_radius" z="start_cavity_z" />
-                 <zplane rmin="Alcap_cavity_radius" rmax="Alcap_radius" z="Alcap_z" />
+                  <zplane rmin="Alcap_cavity_radius" rmax="Alcap_radius" z="start_cavity_z" />
+                 <zplane rmin="Alcap_cavity_radius" rmax="Alcap_radius" z="end_cavity_z" />
+                 <zplane rmin="0" rmax="Alcap_radius" z="end_cavity_z" />
+                 <zplane rmin="0" rmax="Alcap_radius" z="Alcap_z" />
          </polycone>
 
  </solids>

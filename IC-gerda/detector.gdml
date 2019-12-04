@@ -20,15 +20,11 @@
   <quantity name="source_z" type="length" value="source_height" unit="mm"/>
   <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
 
-  <quantity name="bottom_z" type="length" value="(crystal_height-top_height)" unit="mm"/>
-  <quantity name="top_z" type="length" value="top_height" unit="mm"/>
-
-  <quantity name="cylinder_z" type="length" value="cylinder_outer_height" unit="mm"/>
-  
   <quantity name="pos_source_fromAlcap" type="length" value="position_source_fromAlcap" unit="cm"/>
-  <quantity name="pos_crystal_fromTop" type="length" value="(position_crystal_fromTop-pos_vacuum_cavity)" unit="mm"/> 
+  <quantity name="pos_crystal_fromTop" type="length" value="(position_crystal_fromTop-position_vacuum_cavity)" unit="mm"/> 
 <!--  <quantity name="position_wrap" type="length" value="(position_holder_fromTop-(wrap_outer_height-cylinder_inner_height))"  unit="mm"/> -->
-  <quantity name="pos_holder_fromTop" type="length" value="(position_holder_fromTop-pos_vacuum_cavity)" unit="mm"/> 
+<!--- <quantity name="position_wrap" type="length" value="(position_holder_fromTop-position_vacuum_cavity)"  unit="mm"/> -->
+  <quantity name="pos_holder_fromTop" type="length" value="(position_holder_fromTop-position_vacuum_cavity)" unit="mm"/> 
 
   <position name="pos_source"  z="-pos_source_fromAlcap" /> 
   <position name="pos_crystal" z="pos_crystal_fromTop" /> 
@@ -51,7 +47,7 @@
   <position name="pos_copper_plate" z="-(lead_castle_table2_z-pos_Alcap+copper_plate_z/2)" />
 
   <quantity name="vacuum_cavity_z" type="length" value="(Alcap_height-position_Alcap_cavity_fromTop)" unit="mm"/>
-  <quantity name="vacuum_cavity_radius" type="length" value="(Alcap_width-Alcap_thickness)/2" unit="mm"/>
+  <quantity name="vacuum_cavity_radius" type="length" value="(Alcap_width-2*Alcap_thickness)/2" unit="mm"/>
 
  
 
