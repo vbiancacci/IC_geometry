@@ -18,7 +18,7 @@
   <quantity name="cavity_bottom_plate_y" type="length" value="cavity_bottom_plate_depth" unit="mm"/>
   <quantity name="cavity_bottom_plate_z" type="length" value="cavity_bottom_plate_height" unit="mm"/>
 
-  <position name="pos_cavity_bottom_plate" y="(bottom_plate_y-cavity_bottom_plate_y)/2" />
+  <position name="pos_cavity_bottom_plate" y="(bottom_plate_y-cavity_bottom_plate_y)/2+0.01" />  <!-- 0.01 overlap -->
 
    </define>
 

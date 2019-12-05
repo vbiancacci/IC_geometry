@@ -17,7 +17,7 @@
   <quantity name="crystal_z" type="lenght" value="crystal_height" unit="mm" />
   <quantity name="crystal_radius" type="length" value="bottom_width/2" unit="mm"/>
 
-  <quantity name="groove_top_z" type="length" value="groove_top_height" unit="mm"/>
+  <quantity name="groove_top_z" type="length" value="(groove_top_height+0.01)" unit="mm"/>   <!-- 0.01 overlap -->
   <quantity name="groove_top_radius" type="length" value="groove_top_width/2" unit="mm"/>
   
   <quantity name="top_z" type="length" value="(crystal_height-bottom_height)" unit="mm"/>
@@ -32,7 +32,7 @@
 
   <quantity name="start_groove_z" type="lenght" value="(crystal_height-groove_height)" unit="mm"  />
 
-  <position name="pos_groove_top"  z="(groove_top_z/2-0.01)" />
+  <position name="pos_groove_top"  z="(groove_top_z/2-0.01)" />   <!--0.01  overlap -->
   <position name="pos_groove_center"  z="(crystal_z-groove_z/2)" />
 
  

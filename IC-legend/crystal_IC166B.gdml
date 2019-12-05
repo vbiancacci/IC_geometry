@@ -19,12 +19,12 @@
   <quantity name="cavity_z" type="length" value="cavity_height" unit="mm"/>
   <quantity name="cavity_radius" type="length" value="cavity_width/2" unit="mm"/>
 
-  <quantity name="groove_z" type="length" value="groove_height" unit="mm"/>
+  <quantity name="groove_z" type="length" value="(groove_height+0.01)" unit="mm"/>
   <quantity name="groove_minimum_radius" type="length" value="groove_inner_width/2" unit="mm"/>
   <quantity name="groove_maximum_radius" type="length" value="groove_outer_width/2" unit="mm"/>
 
-  <position name="pos_cavity"  z="cavity_z/2" />
-  <position name="pos_groove"  z="(crystal_z-groove_z/2)" />
+  <position name="pos_cavity"  z="(cavity_z/2-0.01)" />   <!--0.01 overlap -->
+  <position name="pos_groove"  z="(crystal_z-groove_z/2+0.01)" />
 
  
  </define>
