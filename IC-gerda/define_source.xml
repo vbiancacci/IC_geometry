@@ -1,7 +1,7 @@
 
 
-  <constant name="source_height"   value="2" />
-  <constant name="source_width"   value="2" />
-  <constant name="position_source_fromAlcap"   value="5" />
+  <constant name="source_height"   value="1" />
+  <constant name="source_width"   value="1" />
+  <constant name="position_source_fromAlcap"   value="9.6" />
 
 

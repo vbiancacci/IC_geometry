@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY define_lead_castle SYSTEM "define_lead_castle.xml">
+]>
+
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+
+ <define>
+
+	&define_lead_castle;
+  <constant name="TWOPI" value="2.*pi"/>
+
+  <quantity name="copper_r" type="length" value="copper_radius" unit="mm" />
+  <quantity name="copper_inner_r" type="length" value="copper_inner_radius" unit="mm" />
+  <quantity name="copper_z" type="length" value="copper_height" unit="mm" />
+
+
+   </define>
+
+   <materials/>
+
+ <solids>
+ <polyhedra name="copper_strange" startphi="0" deltaphi="TWOPI" numsides="4" aunit="rad" >
+        <zplane rmin="copper_inner_r" rmax="copper_r" z="0" />
+        <zplane rmin="copper_inner_r" rmax="copper_r" z="copper_z" />
+ </polyhedra>
+
+ </solids>
+
+
+
+
+
+
+<structure>
+	 <volume name="Copper_strange">
+		 <materialref ref="G4_Cu"/>
+		 <solidref ref="copper_strange"/>
+	 </volume>
+ </structure>
+
+
+
+
+ <setup name="Default" version="1.0">
+	 <world ref="Copper_strange"/>
+ </setup>
+
+</gdml>
+

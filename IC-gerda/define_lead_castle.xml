@@ -1,3 +1,13 @@
+<!-- TABLE with strange measurements, some of them used by Michael in his simulation and others invented by me -->
+
+  <constant name="lead_radius"  value="750" />
+  <constant name="lead_height" value="1000"  />
+  
+  <constant name="copper_radius"  value="170" />
+  <constant name="copper_height" value="500"  />
+
+  <constant name="copper_inner_radius"  value="160" />
+
 
 <!-- TABLE 1 -->
 

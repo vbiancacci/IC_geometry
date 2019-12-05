@@ -1,6 +1,6 @@
 /run/verbose 1
 #/event/verbose 1
-#/tracking/verbose 1
+/tracking/verbose 1
 
 /g4simple/setRandomSeed true
 #/random/setSeed 12345678
@@ -30,7 +30,7 @@
 # Steps are only written out if they are in a volume that matches a pattern set
 # via the setVolID command
 # Example setting a full volume name (exact match):
-/g4simple/setVolID Crystal_PV 1
+///g4simple/setVolID Crystal_PV 1
 # Example using a regular expression to match multiple volumes, extract an
 # integer from the name, and set it as the volID
 #/g4simple/setVolID .*Detector([0-9]*).* $1
@@ -54,8 +54,8 @@
 #/vis/filtering/trajectories/create/chargeFilter
 #/vis/filtering/trajectories/chargeFilter-0/add 0
 
-/vis/filtering/trajectories/create/particleFilter
-/vis/filtering/trajectories/particleFilter-0/add gamma
+#/vis/filtering/trajectories/create/particleFilter
+#/vis/filtering/trajectories/particleFilter-0/add gamma
 
 /vis/modeling/trajectories/create/drawByAttribute
 /vis/modeling/trajectories/select drawByAttribute-0
@@ -89,32 +89,27 @@
 /g4simple/listPhysVols
 
 # Set up gps after /run/initialize
-# This is for 208Tl events distributed throughout the "source" volume
-#/gps/particle gamma
-#/gps/position 0 0 -5
-#/gps/pos/type Point
+/gps/particle geantino
+/gps/position 0 0 -800 cm
+/gps/pos/type Point
 #/gps/pos/confine Source_PV
-#/gps/ene/mono 2612 keV
-#/gps/direction 0 0 1
+/gps/ene/mono 2612 keV
+/gps/direction 0 0 1
 #/gps/ang/type iso
 
-/gps/particle  ion
-/gps/ion       83 212 0 0
-/gps/energy    0 MeV
-/grdm/nucleusLimits      208 212 81 83
-#/gps/ion 81 208 0 0
-#/gps/energy 0 MeV
-/gps/pos/type Volume
-/gps/pos/shape Sphere
-/gps/pos/radius 1 mm
-/gps/pos/centre 0 0 -5 # mm 
-/gps/pos/confine Source_PV
-#/gps/ang/type iso
-#/run/beamOn 100000
+#/gps/particle  ion
+#/gps/ion       83 212 0 0
+#/gps/energy    0 MeV
+#/grdm/nucleusLimits      208 212 81 83
+#/gps/pos/type Volume
+#/gps/pos/shape Sphere
+#/gps/pos/radius 1 mm
+#/gps/pos/centre 0 0 -5 # mm 
+#/gps/pos/confine Source_PV
 
 
-/vis/scene/endOfEventAction accumulate 100
-/run/beamOn 100
+/vis/scene/endOfEventAction accumulate 1
+/run/beamOn 1
 /vis/viewer/flush
 /vis/viewer/set/autoRefresh true
 

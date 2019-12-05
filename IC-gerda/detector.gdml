@@ -32,7 +32,7 @@
   <position name="pos_holder" z="pos_holder_fromTop"  />
 
   <quantity name="pos_Alcap" value="position_Alcap_fromBottom" type="length"  unit="mm" />
-
+  <quantity name="Alcap_z" value="Alcap_height" type="lenght" unit="mm" />
 
   <quantity name="bottom_plate_z" type="length" value="bottom_plate_height" unit="mm"/>
   <position name="pos_bottom_plate_table" z="pos_Alcap+(bottom_plate_z)/2" />
@@ -42,7 +42,13 @@
 
   <quantity name="lead_castle_table2_z" type="length" value="base_height_2" unit="mm"/>
   <position name="pos_lead_castle_table2" z="pos_Alcap-(lead_castle_table2_z)/2" />
-
+<!--
+  <quantity name="lead_castle_table_strange_z" type="length" value="lead_height" unit="mm"/>
+  <position name="pos_lead_castle_table_strange" z="(pos_Alcap-lead_castle_table_strange_z)" />
+  
+  <quantity name="copper_table_strange_z" type="length" value="copper_height" unit="mm"/>
+  <position name="pos_copper_table_strange" z="(pos_Alcap-copper_table_strange_z)" /> 
+-->
   <quantity name="copper_plate_z" type="length" value="copper_plate_height" unit="mm"/>
   <position name="pos_copper_plate" z="-(lead_castle_table2_z-pos_Alcap+copper_plate_z/2)" />
 
@@ -56,7 +62,7 @@
  <materials/>
 
  <solids>
-	 <box name="worldBox" lunit="mm" x="1000.0" y="1000.0" z="1000.0"/>
+	 <box name="worldBox" lunit="cm" x="1000.0" y="1000.0" z="1000.0"/>
 
 <!-- source -->
          <tube name="source" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
@@ -100,15 +106,15 @@
 
 	     <volume name="World">
                  <materialref ref="G4_AIR"/>
-		 <solidref ref="worldBox"/>
+		 <solidref ref="worldBox"/> 
 		 <physvol>
                          <file name="bottom_plate.gdml"/>
 			 <positionref ref="pos_bottom_plate_table"/>
-		 </physvol><!--
+		 </physvol> 
 		 <physvol>
                          <file name="lead_castle_table1.gdml"/>
 			 <positionref ref="pos_lead_castle_table1"/>
-		 </physvol>-->
+		 </physvol>  <!--
 		 <physvol> 
 		 <file name="lead_castle_table2.gdml"/>
 			 <positionref ref="pos_lead_castle_table2"/>
@@ -116,7 +122,16 @@
 		 <physvol>
                          <file name="copper_plate_table2.gdml"/>
 			 <positionref ref="pos_copper_plate"/>
+		 </physvol> --> 
+		<!--
+		 <physvol> 
+		 <file name="lead_castle_table_strange.gdml"/>
+			 <positionref ref="pos_lead_castle_table_strange"/>
 		 </physvol>
+		 <physvol>
+                         <file name="copper_table_strange.gdml"/>
+			 <positionref ref="pos_copper_table_strange"/>
+		 </physvol> -->
 		 <physvol> 
                          <volumeref ref="Source"/>
                          <positionref ref="pos_source"/>
@@ -124,11 +139,11 @@
 		 <physvol>
 			 <file name="Alcap.gdml"/>
 			 <positionref ref="center"/>
-		 </physvol>
+		 </physvol> 
 		 <physvol> 
                          <volumeref ref="Vacuum_cavity"/>
                          <positionref ref="pos_vacuum_cavity"/>
-		 </physvol>
+		 </physvol> 
 	 </volume>
 
  </structure>
