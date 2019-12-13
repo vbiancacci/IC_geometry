@@ -4,4 +4,8 @@
   <constant name="source_width"   value="1" />
   <constant name="position_source_fromAlcap"   value="9.6" />
 
+  <constant name="source_capsule_height"   value="7" />   <!-- which is the height and which the width? -->
+  <constant name="source_capsule_width"   value="2" />
 
+  <constant name="source_epoxy_height"   value="2.2" />
+  <constant name="source_epoxy_width"   value="1.6" />

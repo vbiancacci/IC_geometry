@@ -22,13 +22,12 @@
 
   <quantity name="pos_source_fromAlcap" type="length" value="position_source_fromAlcap" unit="cm"/>
   <quantity name="pos_crystal_fromTop" type="length" value="(position_crystal_fromTop-position_vacuum_cavity)" unit="mm"/> 
-<!--  <quantity name="position_wrap" type="length" value="(position_holder_fromTop-(wrap_outer_height-cylinder_inner_height))"  unit="mm"/> -->
-<!--- <quantity name="position_wrap" type="length" value="(position_holder_fromTop-position_vacuum_cavity)"  unit="mm"/> -->
+  <quantity name="position_wrap" type="length" value="(position_holder_fromTop-position_vacuum_cavity)"  unit="mm"/> 
   <quantity name="pos_holder_fromTop" type="length" value="(position_holder_fromTop-position_vacuum_cavity)" unit="mm"/> 
 
   <position name="pos_source"  z="-pos_source_fromAlcap" /> 
   <position name="pos_crystal" z="pos_crystal_fromTop" /> 
-<!--  <position name="pos_wrap" z="position_wrap" />  -->
+  <position name="pos_wrap" z="position_wrap" /> 
   <position name="pos_holder" z="pos_holder_fromTop"  />
 
   <quantity name="pos_Alcap" value="position_Alcap_fromBottom" type="length"  unit="mm" />
@@ -65,7 +64,9 @@
 	 <box name="worldBox" lunit="cm" x="1000.0" y="1000.0" z="1000.0"/>
 
 <!-- source -->
-         <tube name="source" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+   <!--      <tube name="source" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+         <tube name="source_capsule" rmax="source_capsule_radius" z="source_capsule_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+-->
 
          <polycone name="vacuum_cavity" startphi="0" deltaphi="TWOPI" aunit="rad">
                  <zplane rmin="0" rmax="vacuum_cavity_radius" z="0" />
@@ -81,21 +82,31 @@
 
  <structure>
 	 <volume name="Source">
-                 <materialref ref="G4_Cu"/>
-                 <solidref ref="source"/>
+                 <file name="source.gdml"/>
+                 <positionref ref="pos_source"/>
          </volume>
 
-        <volume name="Vacuum_cavity">
+	 <volume name="Source_capsule">
+                 <file name="source_capsule.gdml"/>
+                 <positionref ref="pos_source_capsule"/>
+         </volume>
+        
+	 <volume name="Source_Epoxy">
+                 <file name="source_epoxy.gdml"/>
+                 <positionref ref="pos_source_epoxy"/>
+         </volume>
+	 
+	 <volume name="Vacuum_cavity">
                  <materialref ref="G4_Galactic"/>
                  <solidref ref="vacuum_cavity"/>
 		 <physvol>
                          <file name="crystal.gdml"/>
                          <positionref ref="pos_crystal"/>
-                 </physvol><!-- 
+                 </physvol> 
 		 <physvol>
                          <file name="teflon_wrap.gdml"/>
                          <positionref ref="pos_wrap"/>
-                 </physvol> -->
+                 </physvol> 
                  <physvol>
                          <file name="holder.gdml"/>
                          <positionref ref="pos_holder"/>
