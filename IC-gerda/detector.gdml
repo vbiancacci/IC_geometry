@@ -63,11 +63,6 @@
  <solids>
 	 <box name="worldBox" lunit="cm" x="1000.0" y="1000.0" z="1000.0"/>
 
-<!-- source -->
-   <!--      <tube name="source" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
-         <tube name="source_capsule" rmax="source_capsule_radius" z="source_capsule_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
--->
-
          <polycone name="vacuum_cavity" startphi="0" deltaphi="TWOPI" aunit="rad">
                  <zplane rmin="0" rmax="vacuum_cavity_radius" z="0" />
                  <zplane rmin="0" rmax="vacuum_cavity_radius" z="vacuum_cavity_z" />
@@ -81,11 +76,6 @@
 
 
  <structure>
-	 <volume name="Source">
-                 <file name="source.gdml"/>
-                 <positionref ref="pos_source"/>
-         </volume>
-
 	 <volume name="Source_capsule">
                  <file name="source_capsule.gdml"/>
                  <positionref ref="pos_source_capsule"/>
@@ -143,10 +133,11 @@
                          <file name="copper_table_strange.gdml"/>
 			 <positionref ref="pos_copper_table_strange"/>
 		 </physvol> -->
-		 <physvol> 
-                         <volumeref ref="Source"/>
+	         <physvol>
+                         <file name="source_capsule.gdml"/>
                          <positionref ref="pos_source"/>
-		 </physvol>
+                 </physvol>
+
 		 <physvol>
 			 <file name="Alcap.gdml"/>
 			 <positionref ref="center"/>

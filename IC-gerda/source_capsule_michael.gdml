@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE gdml [
-<!ENTITY define_source SYSTEM "define_source.xml">
+<!ENTITY define_source_michael SYSTEM "define_source_michael.xml">
 ]>
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
 
  <define>
 
+ <constant name="TWOPI" value="2.*pi"/>
 
- &define_source;
+ &define_source_michael;
 
 	<quantity name="source_capsule_z" type="length" value="source_capsule_height" unit="mm"/>
   	<quantity name="source_capsule_radius" type="length" value="source_capsule_width/2" unit="mm"/>
-
+  
+	<quantity name="position_source_capsule" type="length" value="source_capsule_z/2" unit="mm"/>
+	<position name="pos_source_capsule" z="position_source_capsule"/>
+ 
  </define>
 
 
@@ -26,9 +30,13 @@
 
  <structure>
 	 <volume name="Source_Capsule">
-		 <materialref ref="Al"/>
+		 <materialref ref="G4_Al"/>
 		 <solidref ref="source_capsule"/>
-	 </volume>
+	  	 <physvol>
+                         <file name="source_michael.gdml"/>
+                         <positionref ref="pos_source_capsule"/>
+                 </physvol>
+	</volume>
  </structure>
 
 

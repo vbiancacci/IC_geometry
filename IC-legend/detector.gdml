@@ -142,6 +142,10 @@
                          <volumeref ref="Source"/>
                          <positionref ref="pos_source"/>
 		 </physvol>
+                 <physvol>
+                         <file name="source_capsule.gdml"/>
+                         <positionref ref="pos_source"/>
+                 </physvol>
 		  <physvol>
 			 <file name="Alcap.gdml"/>
 			 <positionref ref="center"/>
