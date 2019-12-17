@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY define_lead_castle SYSTEM "define_lead_castle.xml">
+]>
+
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+
+ <define>
+
+	&define_lead_castle;
+  <constant name="TWOPI" value="2.*pi"/>
+
+  <quantity name="lead_x" type="length" value="lead_width" unit="mm" />
+  <quantity name="lead_y" type="length" value="lead_depth" unit="mm"/>
+  <quantity name="lead_z" type="length" value="lead_height" unit="mm"/>
+
+  <quantity name="copper_x" type="length" value="copper_width" unit="mm" />
+  <quantity name="copper_y" type="length" value="copper_depth" unit="mm" />
+  <quantity name="copper_z" type="length" value="copper_height" unit="mm" />
+
+  <quantity name="empty_space_x" type="length"  value="empty_space_width" unit="mm" />
+  <quantity name="empty_space_y"  type="length" value="empty_space_depth" unit="mm" />
+  <quantity name="empty_space_z"  type="length" value="empty_space_height" unit="mm" />
+
+  <position name="pos_center" z="0" />
+
+</define>
+
+   <materials/>
+
+
+ <solids>
+
+ <box name="lead_castle" x="lead_x" y="lead_y" z="lead_z"/>
+ <box name="copper" x="copper_x" y="copper_y" z="copper_z"/>
+ <box name="empty_space" x="empty_space_x" y="empty_space_y" z="empty_space_z"/>
+
+
+ <subtraction name="extruded_lead_1" >
+	<first ref="lead_castle"/> <second ref="copper"/>
+        <positionref ref="pos_center" />
+ </subtraction>
+
+ <subtraction name="extruded_lead_2" >
+        <first ref="extruded_lead_1"/> <second ref="empty_space"/>
+        <positionref ref="pos_center" />
+ </subtraction>
+
+ <subtraction name="extruded_copper" >
+        <first ref="copper"/> <second ref="empty_space"/>
+        <positionref ref="pos_center" />
+ </subtraction>
+ 
+
+ </solids>
+
+
+
+<structure>
+	<volume name="Copper">
+		 <materialref ref="G4_Cu"/>
+		 <solidref ref="copper"/>
+	</volume>
+		
+	 <volume name="Lead_castle">
+		 <materialref ref="G4_Pb"/>
+		 <solidref ref="extruded_lead_2"/>
+		 <physvol>
+			<volumeref ref="Copper" />
+                        <positionref ref="pos_center"/>
+                 </physvol>
+
+	 </volume>
+ </structure>
+
+
+
+
+ <setup name="Default" version="1.0">
+	 <world ref="Lead_castle"/>
+ </setup>
+
+</gdml>
+

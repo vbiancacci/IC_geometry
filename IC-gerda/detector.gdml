@@ -17,9 +17,6 @@
   <quantity name="position_vacuum_cavity" type="length" value="position_Alcap_cavity_fromTop" unit="mm" />
   <position name="pos_vacuum_cavity" z="position_vacuum_cavity"/>
 
-  <quantity name="source_z" type="length" value="source_height" unit="mm"/>
-  <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
-
   <quantity name="pos_source_fromAlcap" type="length" value="position_source_fromAlcap" unit="cm"/>
   <quantity name="pos_crystal_fromTop" type="length" value="(position_crystal_fromTop-position_vacuum_cavity)" unit="mm"/> 
   <quantity name="position_wrap" type="length" value="(position_holder_fromTop-position_vacuum_cavity)"  unit="mm"/> 
@@ -42,15 +39,9 @@
   <quantity name="lead_castle_table2_z" type="length" value="base_height_2" unit="mm"/>
   <position name="pos_lead_castle_table2" z="pos_Alcap-(lead_castle_table2_z)/2" />
 <!--
-  <quantity name="lead_castle_table_strange_z" type="length" value="lead_height" unit="mm"/>
-  <position name="pos_lead_castle_table_strange" z="(pos_Alcap-lead_castle_table_strange_z)" />
-  
-  <quantity name="copper_table_strange_z" type="length" value="copper_height" unit="mm"/>
-  <position name="pos_copper_table_strange" z="(pos_Alcap-copper_table_strange_z)" /> 
+  <quantity name="lead_castle_table_michael_z" type="length" value="lead_height" unit="mm"/>
+  <position name="pos_lead_castle_table_michael" z="pos_Alcap-(lead_castle_table_michael_z)/2" />
 -->
-  <quantity name="copper_plate_z" type="length" value="copper_plate_height" unit="mm"/>
-  <position name="pos_copper_plate" z="-(lead_castle_table2_z-pos_Alcap+copper_plate_z/2)" />
-
   <quantity name="vacuum_cavity_z" type="length" value="(Alcap_height-position_Alcap_cavity_fromTop)" unit="mm"/>
   <quantity name="vacuum_cavity_radius" type="length" value="(Alcap_width-2*Alcap_thickness)/2" unit="mm"/>
 
@@ -76,16 +67,6 @@
 
 
  <structure>
-	 <volume name="Source_capsule">
-                 <file name="source_capsule.gdml"/>
-                 <positionref ref="pos_source_capsule"/>
-         </volume>
-        
-	 <volume name="Source_Epoxy">
-                 <file name="source_epoxy.gdml"/>
-                 <positionref ref="pos_source_epoxy"/>
-         </volume>
-	 
 	 <volume name="Vacuum_cavity">
                  <materialref ref="G4_Galactic"/>
                  <solidref ref="vacuum_cavity"/>
@@ -119,22 +100,14 @@
 		 <physvol> 
 		 <file name="lead_castle_table2.gdml"/>
 			 <positionref ref="pos_lead_castle_table2"/>
-		 </physvol>
-		 <physvol>
-                         <file name="copper_plate_table2.gdml"/>
-			 <positionref ref="pos_copper_plate"/>
-		 </physvol> --> 
+		 </physvol>-->
 		<!--
 		 <physvol> 
-		 <file name="lead_castle_table_strange.gdml"/>
-			 <positionref ref="pos_lead_castle_table_strange"/>
-		 </physvol>
-		 <physvol>
-                         <file name="copper_table_strange.gdml"/>
-			 <positionref ref="pos_copper_table_strange"/>
+		 <file name="lead_castle_table_michael.gdml"/>
+			 <positionref ref="pos_lead_castle_table_michael"/>
 		 </physvol> -->
 	         <physvol>
-                         <file name="source_capsule.gdml"/>
+                         <file name="source_encapsulated.gdml"/>
                          <positionref ref="pos_source"/>
                  </physvol>
 

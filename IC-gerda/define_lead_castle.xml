@@ -1,12 +1,16 @@
-<!-- TABLE with strange measurements, some of them used by Michael in his simulation and others invented by me -->
+<!-- TABLE with michael measurements -->
 
-  <constant name="lead_radius"  value="750" />
-  <constant name="lead_height" value="1000"  />
+  <constant name="lead_width"  value="(100*2/3+50)*2" />
+  <constant name="lead_depth"  value="(100*2/3+50)*2" />
+  <constant name="lead_height" value="285"  />
   
-  <constant name="copper_radius"  value="170" />
-  <constant name="copper_height" value="500"  />
+  <constant name="copper_width"  value="(100*2/3)*2" />
+  <constant name="copper_depth"  value="(100*2/3)*2" />
+  <constant name="copper_height" value="185"  />
 
-  <constant name="copper_inner_radius"  value="160" />
+  <constant name="empty_space_width"  value="(100*2/3-10)*2" />
+  <constant name="empty_space_depth"  value="(100*2/3-10)*2" />
+  <constant name="empty_space_height"  value="285*2" />
 
 
 <!-- TABLE 1 -->
