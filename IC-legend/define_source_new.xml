@@ -2,7 +2,7 @@
 
   <constant name="source_height"   value="1" />
   <constant name="source_width"   value="1" />
-  <constant name="position_source_fromAlcap"   value="9.6" />
+  <constant name="position_source_fromAlcap"   value="4.2" />
 
   <constant name="source_capsule_height"   value="7" />   <!-- which is the height and which the width? -->
   <constant name="source_capsule_width"   value="2" />
