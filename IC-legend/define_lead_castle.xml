@@ -51,8 +51,8 @@
   <constant name="bottom_plate_height"  value="15" />
 
   <constant name="cavity_bottom_plate_width"  value="120" />
-  <constant name="cavity_bottom_plate_depth"  value="475" />
-  <constant name="cavity_bottom_plate_height"  value="15+0.001" />
+  <constant name="cavity_bottom_plate_depth"  value="940" /> <!--475*2-->
+  <constant name="cavity_bottom_plate_height"  value="20"/> 
 
 
 
