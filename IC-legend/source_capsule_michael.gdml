@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY define_source_michael SYSTEM "define_source_michael.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+
+ <define>
+
+ <constant name="TWOPI" value="2.*pi"/>
+
+ &define_source_michael;
+
+	<quantity name="source_capsule_z" type="length" value="source_capsule_height" unit="mm"/>
+  	<quantity name="source_capsule_radius" type="length" value="source_capsule_width/2" unit="mm"/>
+  
+	<quantity name="position_source_capsule" type="length" value="source_height/2" unit="mm"/>
+	<position name="pos_source_capsule" z="-position_source_capsule"/>
+ 
+        <quantity name="source_z" type="length" value="source_height" unit="mm"/>
+        <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
+
+ </define>
+
+
+ <materials/>
+
+
+
+ <solids>
+	 <tube name="source_capsule" rmax="source_capsule_radius" z="source_capsule_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+        <tube name="source_michael" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
+ </solids>
+
+ <structure>
+
+         <volume name="Source_Michael">
+                 <materialref ref="G4_SILICON_DIOXIDE"/>
+                 <solidref ref="source_michael"/>
+         </volume>
+
+
+	 <volume name="Source_Capsule">
+		 <materialref ref="G4_Al"/>
+		 <solidref ref="source_capsule"/>
+	  	 <physvol>
+                         <volumeref ref="Source_Michael"/>
+			 <positionref ref="pos_source_capsule"/>
+                 </physvol>
+	</volume>
+ </structure>
+
+
+ <setup name="Default" version="1.0">
+	 <world ref="Source_Capsule"/>
+ </setup>
+
+</gdml>
+

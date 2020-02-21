@@ -15,25 +15,20 @@
 
 
   <quantity name="crystal_z" type="lenght" value="crystal_height" unit="mm" />
-  <quantity name="crystal_radius" type="length" value="bottom_width/2" unit="mm"/>
+  <quantity name="bottom_radius" type="length" value="bottom_width/2" unit="mm"/>
 
-  <quantity name="groove_top_z" type="length" value="(groove_top_height+0.01)" unit="mm"/>   <!-- 0.01 overlap -->
+  <quantity name="groove_top_z" type="length" value="groove_top_height" unit="mm"/>   
   <quantity name="groove_top_radius" type="length" value="groove_top_width/2" unit="mm"/>
   
   <quantity name="top_z" type="length" value="(crystal_height-bottom_height)" unit="mm"/>
   <quantity name="top_radius" type="length" value="top_width/2" unit="mm"/>
-  <quantity name="top_inner_radius" type="length" value="cavity_width/2" unit="mm"/>
   
+  <quantity name="cavity_radius" type="length" value="cavity_width/2" unit="mm"/>
   <quantity name="cavity_z" type="length" value="cavity_height" unit="mm"/>
 
-  <quantity name="groove_z" type="length" value="groove_height" unit="mm"/>
-  <quantity name="groove_center_radius" type="length" value="groove_inner_width/2" unit="mm"/>
-  <quantity name="groove_radius" type="length" value="groove_outer_width/2" unit="mm"/>
-
-  <quantity name="start_groove_z" type="lenght" value="(crystal_height-groove_height)" unit="mm"  />
-
-  <position name="pos_groove_top"  z="(groove_top_z/2-0.01)" />   <!--0.01  overlap -->
-  <position name="pos_groove_center"  z="(crystal_z-groove_z/2)" />
+  <quantity name="groove_z" type="length" value="(crystal_height-groove_height)" unit="mm"/>
+  <quantity name="groove_minimum_radius" type="length" value="groove_inner_width/2" unit="mm"/>
+  <quantity name="groove_maximum_radius" type="length" value="groove_outer_width/2" unit="mm"/>
 
  
  </define>
@@ -77,34 +72,21 @@
 
 
  <solids>
-
-     	<tube name="groove_top" rmax="groove_top_radius"  z="groove_top_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
-     	<tube name="groove_center" rmax="groove_center_radius"  z="groove_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
-	
-	<polycone name="crystal" startphi="0" deltaphi="TWOPI" aunit="rad">
-                 <zplane rmin="top_inner_radius" rmax="top_radius" z="0" />
-                 <zplane rmin="top_inner_radius" rmax="crystal_radius" z="top_z" />
-                 <zplane rmin="top_inner_radius" rmax="crystal_radius" z="cavity_z" />
-                 <zplane rmin="0" rmax="crystal_radius" z="cavity_z" />
-                 <zplane rmin="0" rmax="crystal_radius" z="start_groove_z" />
-                 <zplane rmin="groove_radius" rmax="crystal_radius" z="start_groove_z" />
-                 <zplane rmin="groove_radius" rmax="crystal_radius" z="crystal_z" />
-      	</polycone>
-
-
-         <subtraction name="groove_top_crystal">
-                 <first ref="crystal"/> <second ref="groove_top"/>
-                 <positionref ref="pos_groove_top"/>
-         </subtraction>
-
-
-
-	<union name="final_crystal">
-                 <first ref="groove_top_crystal"/> <second ref="groove_center"/>
-                 <positionref ref="pos_groove_center"/>
-        </union>
-
-
+	<genericPolycone name = "thepolycone" startphi="1" deltaphi="TWOPI" aunit="rad">
+                <rzpoint r="groove_top_radius" z="0" />
+                <rzpoint r="top_radius" z="0" />
+                <rzpoint r="bottom_radius" z="top_z" />
+                <rzpoint r="bottom_radius" z="crystal_z" />
+                <rzpoint r="groove_maximum_radius" z="crystal_z" />
+                <rzpoint r="groove_maximum_radius" z="groove_z" />
+                <rzpoint r="groove_minimum_radius" z="groove_z" />
+                <rzpoint r="groove_minimum_radius" z="crystal_z" />
+                <rzpoint r="0" z="crystal_z" />
+                <rzpoint r="0" z="cavity_z" />
+                <rzpoint r="cavity_radius" z="cavity_z" />
+                <rzpoint r="cavity_radius" z="groove_top_z" />
+                <rzpoint r="groove_top_radius" z="groove_top_z" />
+        </genericPolycone>
  </solids>
 
 
@@ -112,7 +94,7 @@
  <structure>
 	 <volume name="Crystal">
 		 <materialref ref="enriched_germanium"/>
-		 <solidref ref="final_crystal"/>
+		 <solidref ref="thepolycone"/>
 	 </volume>
  </structure>
 

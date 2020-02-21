@@ -55,6 +55,9 @@
   <constant name="cavity_bottom_plate_height"  value="20"/> 
 
 
+  <!-- POSITION -->
+
+  <constant name="position_Alcap_fromBottom" value="265.0" />
 
 
 

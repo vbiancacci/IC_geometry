@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE gdml [
-<!ENTITY define_source SYSTEM "define_source_new.xml">
+<!ENTITY define_source SYSTEM "define_source_big.xml">
 ]>
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
@@ -41,9 +41,9 @@
 
 
         <material name="epoxy_mod" formula="epoxy_mod">
-                <D value="0.711" unit="g/cm3"/>
+                <D value="0.711" unit="g/cm3"/>    <!-- D value="1.129" unit="g/cm3"/> -->
                 <composite n="41" ref="Carbon" />
-                <composite n="11" ref="Hydrogen" />
+                <composite n="11" ref="Hydrogen" />  <!-- <composite n="49" ref="Hydrogen" /> -->
                 <composite n="7" ref="Oxygen" />
                 <composite n="3" ref="Nitrogen" />
         </material>

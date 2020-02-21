@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE gdml [
 <!ENTITY define_detector SYSTEM "define_detector.xml">
-<!ENTITY define_source SYSTEM "define_source.xml">
+<!ENTITY define_source SYSTEM "define_source_michael.xml">
 <!ENTITY define_lead_castle SYSTEM "define_lead_castle.xml">
 ]>
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
@@ -19,11 +19,13 @@
 
  <!-- when positioning a volume associated to a Boolean solid, the relative center of coordinates considered for the positioning is the one related to the first of the two constituent solids -->
 
+
+  <!-- <quantity name="collimator_z" type="length" value="collimator_height" unit="mm"/>
+  <quantity name="collimator_beam_z" type="length" value="collimator_beam_height" unit="mm"/>  -->
+  <quantity name="source_capsule_z" type="length" value="source_capsule_height" unit="mm" />
+
   <quantity name="position_vacuum_cavity" type="length" value="position_Alcap_cavity_fromTop" unit="mm" />
   <position name="pos_vacuum_cavity" z="position_vacuum_cavity"/>
-
-  <quantity name="source_z" type="length" value="source_height" unit="mm"/>
-  <quantity name="source_radius" type="length" value="source_width/2" unit="mm"/>
 
   <quantity name="pos_source_fromAlcap" type="length" value="position_source_fromAlcap" unit="cm"/>
   <quantity name="pos_crystal_fromTop" type="length" value="(position_crystal_fromTop-position_vacuum_cavity)" unit="mm"/> 
@@ -32,6 +34,7 @@
   <quantity name="pos_holder_fromTop" type="length" value="(position_holder_fromTop-position_vacuum_cavity)" unit="mm"/> 
 
   <position name="pos_source"  z="-pos_source_fromAlcap" />
+  <!-- <position name="pos_collimator"  z="(-pos_source_fromAlcap+source_capsule_z/2+collimator_beam_z-collimator_z/2)" /> -->
   <position name="pos_crystal" z="pos_crystal_fromTop" />
   <position name="pos_wrap" z="position_wrap"/>          
   <position name="pos_holder" z="pos_holder_fromTop"  />
@@ -66,8 +69,6 @@
  <solids>
 	 <box name="worldBox" lunit="m" x="10.0" y="10.0" z="10.0"/>
 
-         <tube name="source" rmax="source_radius" z="source_z" startphi="0" deltaphi="TWOPI" aunit="rad" />
-
          <polycone name="vacuum_cavity" startphi="0" deltaphi="TWOPI" aunit="rad">
                  <zplane rmin="0" rmax="vacuum_cavity_radius" z="0" />
                  <zplane rmin="0" rmax="vacuum_cavity_radius" z="vacuum_cavity_z" />
@@ -79,38 +80,34 @@
 
 
  <structure>
-	 <volume name="Source">
-                 <materialref ref="G4_Cu"/>
-                 <solidref ref="source"/>
-         </volume>
-
-        <volume name="Vacuum_cavity">
+        
+	<volume name="Vacuum_cavity">
                  <materialref ref="G4_Galactic"/>
                  <solidref ref="vacuum_cavity"/>
 		 <physvol>
-                         <file name="crystal_IC160A.gdml"/>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/crystal_IC160A.gdml"/>
                          <positionref ref="pos_crystal"/>
 		 </physvol> <!--
 		 <physvol>
-                         <file name="crystal_IC160B.gdml"/>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/crystal_IC160B.gdml"/>
                          <positionref ref="pos_crystal"/>
 		 </physvol>
 		 <physvol>
-                         <file name="crystal_IC162B.gdml"/>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/crystal_IC162B.gdml"/>
                          <positionref ref="pos_crystal"/>
 		 </physvol> 
 		 <physvol>
-                         <file name="crystal_IC166B.gdml"/>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/crystal_IC166B.gdml"/>
                          <positionref ref="pos_crystal"/>
-		 </physvol> --> 
+		 </physvol> -->
                  <physvol>
-                         <file name="teflon_wrap.gdml"/>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/teflon_wrap.gdml"/>
                          <positionref ref="pos_wrap"/>
                  </physvol>
 		 <physvol>
-                         <file name="holder.gdml"/>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/holder.gdml"/>
                          <positionref ref="pos_holder"/>
-		 </physvol> 
+		 </physvol>
 	 </volume>
 
 
@@ -119,28 +116,33 @@
                  <materialref ref="G4_AIR"/>
                  <solidref ref="worldBox"/>
 		 <physvol>
-                         <file name="bottom_plate.gdml"/>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/bottom_plate.gdml"/>
 			 <positionref ref="pos_bottom_plate_table"/>
 		 </physvol>
 		 <physvol>
-                         <file name="lead_castle_table1.gdml"/>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/lead_castle_table1.gdml"/>
 			 <positionref ref="pos_lead_castle_table1"/>
 		 </physvol>
 		 <!--
 		 <physvol> 
-		 <file name="lead_castle_table2.gdml"/>
+		 <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/lead_castle_table2.gdml"/>
 			 <positionref ref="pos_lead_castle_table2"/>
-		 </physvol> -->
+		 </physvol>
 		 <physvol> 
                          <volumeref ref="Source"/>
                          <positionref ref="pos_source"/>
-		 </physvol><!--
+		 </physvol>-->
                  <physvol>
-                         <file name="source_encapsule.gdml"/>
+<!--                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/source_encapsulated.gdml"/> -->
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/source_capsule_michael.gdml"/>
                          <positionref ref="pos_source"/>
+                 </physvol> <!--
+                 <physvol>
+                         <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/collimator.gdml"/>
+                         <positionref ref="pos_collimator"/>
                  </physvol> -->
 		  <physvol>
-			 <file name="Alcap.gdml"/>
+			 <file name="/lfs/l1/legend/users/bianca/IC_geometry/IC-legend/Alcap.gdml"/>
 			 <positionref ref="center"/>
 		 </physvol> 
 		 <physvol> 
